@@ -9,20 +9,33 @@ Maintainer Kristy Horan
 Build 1.0
 
 %post
-	echo "Setting up installation requirements"
 	export PATH=/opt/conda/bin:$PATH
-	python3 -m pip install --upgrade pip
-	cd /opt/	
-	echo "Installing chewBBACA."
-	pip3 install chewbbaca==2.0.12
-	pip3 install --upgrade numpy
-	
-	
-	
+
+	conda config --add channels conda-forge
+	conda config --add channels defaults
+	conda config --add channels r
+	conda config --add channels bioconda
+
+	conda install  snakemake=5.2.0
+
+        echo "Setting up installation requirements"
+        export PATH=/opt/conda/bin:$PATH
+        python3 -m pip install --upgrade pip
+        cd /opt/
+        echo "Installing chewBBACA."
+        pip3 install chewbbaca==2.0.12
+        
+        echo "Installing blastp"
+        conda install blast
+	echo "Installing prodigal"
+	conda install prodigal
 
 %runscript
-	echo "Welcome to a chewBBACA pipeline. May the force be with you"
-	exec chewBBACA.py "$@"
+        echo " A container for chewBBACA "
+        chewBBACA.py "@"
+
 %test
 
-	/opt/conda/bin/chewBBACA.py -h	
+        /opt/conda/bin/chewBBACA.py -h
+
+
