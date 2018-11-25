@@ -32,7 +32,7 @@ Build 1.1
 
 %environment
 	export PYTHONNOUSERSITE=NO
-        export PYTHONSITE=/opt/conda/lib/python3.6/site-packages
+        export PYTHONPATH=/opt/conda/lib/python3.6/site-packages
 
 %runscript
         echo " A container for chewBBACA "

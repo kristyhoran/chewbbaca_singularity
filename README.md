@@ -1,1 +1,1 @@
-A singularity container for chewBBACA version 2.0.16
+A container for chewBBACA version 2.0.12
